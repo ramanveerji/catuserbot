@@ -114,11 +114,12 @@ async def maccmd(event):  # sourcery no-metrics
     output = io.BytesIO()
     output.name = (
         "-".join(
-            "".join(random.choice(string.hexdigits) for img in range(event))
+            "".join(random.choice(string.hexdigits) for _ in range(event))
             for event in [5, 4, 3, 2, 1]
         )
         + ".png"
     )
+
     temp.save(output, "PNG")
     output.seek(0)
     await event.client.send_file(

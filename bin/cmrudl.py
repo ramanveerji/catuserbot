@@ -205,6 +205,9 @@ class Main(object):
             progress(self.DL_PROGRESS_DONE, start, time.time(), offset, 0, size, total)
 
     def parse_storage(self, html):
+
+
+
         class TheHTMLParser(HTMLParser):
             def __init__(self):
                 HTMLParser.__init__(self)
@@ -221,13 +224,15 @@ class Main(object):
                 if not self.script:
                     return
                 src = data.strip()
-                m = self.jsobjreg.match(src)
-                if not m:
+                if m := self.jsobjreg.match(src):
+                    self.jsobj = m.group(1)
+
+                else:
                     return
-                self.jsobj = m.group(1)
 
             def result(self):
                 return self.jsobj or None
+
 
         parser = TheHTMLParser()
         parser.feed(html)
@@ -451,9 +456,7 @@ class Main(object):
 
         try:
             self.run()
-        except Exception as ex:
-            return exception(ex)
-        except KeyboardInterrupt as ex:
+        except (Exception, KeyboardInterrupt) as ex:
             return exception(ex)
         return 0
 

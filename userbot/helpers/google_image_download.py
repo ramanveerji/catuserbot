@@ -1200,19 +1200,11 @@ class googleimagesdownload:
 
                 # prefix name in image
                 prefix = f"{prefix} " if prefix else ""
-                if no_numbering:
-                    path = f"{main_directory}/{dir_name}/{prefix}{image_name}"
-                else:
-                    path = (
-                        main_directory
-                        + "/"
-                        + dir_name
-                        + "/"
-                        + prefix
-                        + str(count)
-                        + "."
-                        + image_name
-                    )
+                path = (
+                    f"{main_directory}/{dir_name}/{prefix}{image_name}"
+                    if no_numbering
+                    else f"{main_directory}/{dir_name}/{prefix}{str(count)}.{image_name}"
+                )
 
                 try:
                     with open(path, "wb") as output_file:

@@ -30,9 +30,7 @@ hemojis = {
 def get_data(about, ktype):
     data = about[ktype]
     urls = extractor.find_urls(data)
-    if len(urls) > 0:
-        return data
-    return data.capitalize()
+    return data if len(urls) > 0 else data.capitalize()
 
 
 def _format_about(
