@@ -70,9 +70,7 @@ class LyricGenius:
                 lyrics = (await conv.get_response()).text
                 await event.client.send_read_acknowledge(conv.chat_id)
                 await delete_conv(event, chat, flag)
-        if mode == "devloper":
-            return link, lyrics
-        return lyrics
+        return (link, lyrics) if mode == "devloper" else lyrics
 
 
 LyricsGen = LyricGenius()

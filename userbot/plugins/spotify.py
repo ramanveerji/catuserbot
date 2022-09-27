@@ -520,9 +520,7 @@ def title_fetch(title):
         pattern = re.compile(
             r"([a-zA-Z0-9]+(?: ?[a-zA-Z0-9]+)+(?: - \w - \w+)?(?:-\w-\w+)?).*"
         )
-    if regx := pattern.search(title):
-        return regx[1]
-    return title
+    return regx[1] if (regx := pattern.search(title)) else title
 
 
 async def telegraph_lyrics(event, tittle, artist):

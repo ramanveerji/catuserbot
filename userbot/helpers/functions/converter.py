@@ -111,9 +111,7 @@ class CatConverter:
         )  # pain
         if os.path.exists(catmedia):
             os.remove(catmedia)
-        if os.path.exists(catfile):
-            return catevent, catfile
-        return catevent, None
+        return (catevent, catfile) if os.path.exists(catfile) else (catevent, None)
 
     async def to_gif(
         self, event, reply, dirct="./temp", file="meme.mp4", maxsize="5M", noedits=False
@@ -149,9 +147,7 @@ class CatConverter:
             )
         if catmedia and os.path.exists(catmedia):
             os.remove(catmedia)
-        if os.path.exists(catfile):
-            return catevent, catfile
-        return catevent, None
+        return (catevent, catfile) if os.path.exists(catfile) else (catevent, None)
 
 
 Convert = CatConverter()

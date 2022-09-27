@@ -270,9 +270,8 @@ async def fetch_info(chat, event):  # sourcery no-metrics
         caption += "    <b>-</b> "
         caption += "\n    <b>-</b> ".join(reactionslist)
     else:
-        caption += (
-            f"🙂 <b>Enabled Reactions: </b><code>Reactions are not enabled.</code>"
-        )
+        caption += "🙂 <b>Enabled Reactions: </b><code>Reactions are not enabled.</code>"
+
     if description:
         caption += f"\n💬 <b>Description: </b>\n<code>{description}</code>\n"
     return caption

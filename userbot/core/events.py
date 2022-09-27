@@ -473,7 +473,7 @@ async def edit_message(
         return await client.editmessage(
             entity=chatid,
             message=message,
-            text=msg,
+            main_msg=msg,
             parse_mode=parse_mode,
             attributes=attributes,
             formatting_entities=formatting_entities,
@@ -485,10 +485,11 @@ async def edit_message(
             supports_streaming=supports_streaming,
             schedule=schedule,
         )
+
     return await client.editmessage(
         entity=chatid,
         message=message,
-        text=main_msg,
+        main_msg=main_msg,
         parse_mode=parse_mode,
         attributes=attributes,
         formatting_entities=formatting_entities,
